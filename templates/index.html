@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Circadian Rhythm Tool</title>
+
+  <style>
+    .page-bg {
+      background-color: #e6f2ff;
+    }
+    @media (max-width: 768px) {
+      .info-content {
+        margin-top: 20px;
+      }
+    }
+    .bg-red {
+      background-color: #ff6666;
+      padding: 0 5px;
+    }
+    .bg-yellow {
+      background-color: #e5de1a;
+      padding: 0 5px;
+    }
+    .bg-green {
+      background-color: #44c53a;
+      padding: 0 5px;
+    }
+    .bg-grey {
+      background-color: grey;
+      padding: 0 5px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+
+<body class="page-bg">
+
+  <div class="container">
+
+    <h1 class="mt-4 mb-4">Circadian Rhythm Tool</h1>
+
+    <form action="/submit" method="post" id="timeForm">
+      <div class="form-group">
+        <label for="wakeTime">Wake Time:</label>
+        <input type="time" class="form-control" id="wakeTime" name="wakeTime">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="d-flex justify-content-center mt-4">
+      {% if img_data %}
+        <img src="data:image/png;base64,{{img_data}}" alt="Graph" class="graph-img img-fluid">
+      {% else %}
+        <p style="font-size: 1.9em;">Submit your wake time to generate your circadian rhythm graph.</p>
+      {% endif %}
+    </div>
+
+    <div class="info-content mt-4">
+      <h2>Understanding Light Exposure &amp; Sleep relationship</h2>
+      <p>The circadian rhythm, our body's internal clock, influences our sleep patterns, energy levels, and overall health. Light exposure, both natural and artificial, plays a crucial role in regulating this rhythm. This guide is based on the research of neuroscientist Dr. Andrew Huberman and chronobiologist Dr. Samer Hattar.</p>
+
+      <h5><span class="bg-red">Wake up later</span></h5>
+      <p>Exposure to light during the "red zone" hours can delay your circadian rhythm, causing you to wake up later.</p>
+
+      <h5><span class="bg-yellow">Wake up sooner</span></h5>
+      <p>Light exposure during the "yellow zone" hours can advance your circadian rhythm, leading you to wake up earlier.</p>
+
+      <h5><span class="bg-green">Maintain schedule</span></h5>
+      <p>Consistent light exposure during the "green zone" hours will help stabilize your circadian rhythm and maintain your sleep schedule.</p>
+
+      <h5><span class="bg-grey">Dead zone</span></h5>
+      <p>During the "grey zone" hours, your body is less responsive to light exposure.</p>
+
+      <h2>Strategies</h2>
+      <ul>
+        <li>Engage with light during the hours you desire to be awake.</li>
+        <li>Limit light exposure during the hours you want to rest or prepare for sleep.</li>
+      </ul>
+
+      <h2>Helpful Hints</h2>
+      <h4>How much light is needed?</h4>
+      <p>100k Lux, equivalent to about 5-15 minutes of sunlight exposure (depending on weather and location), is recommended. Artificial light is also effective but generally emits less lux.</p>
+
+      <h4>How to manage light exposure?</h4>
+      <p>It's not necessary to completely avoid light. During evenings, aim to reduce light to a level where you can just about manage to see. Your eyes can adjust to much lower light levels than you might expect.</p>
+
+      <h4>Food and exercise during sleep hours</h4>
+      <p>Hard exercise and heavy meals can have a similar effect to light on your circadian rhythm. Same rules apply for when to seek / avoid them as with light. </p>
+
+      <h2>Relevant Resources</h2>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=NAATB55oxeQ" target="_blank">Full podcast - Dr. Huberman discussing circadian rhythms</a></li>
+        <li><a href="https://www.youtube.com/watch?v=oUu3f0ETMJQ" target="_blank">Interview with Dr. Hattar on the impact of light on sleep</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>
