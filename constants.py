@@ -1,0 +1,4 @@
+RED_COLOR = '#d7285c'
+YELLOW_COLOR = '#e5de1a'
+GREEN_COLOR = '#44c53a'
+GREY_COLOR = 'grey'

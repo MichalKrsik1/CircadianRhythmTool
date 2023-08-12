@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Wake-up Time Shift Tool{% endblock %}
+
+{% block extra_styles %}
+<style>
+  .elegant-form {
+    font-family: 'Arial', sans-serif;
+    max-width: 400px; 
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .form-control {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin: 15px 0;
+    padding: 10px;
+    outline: none;
+  }
+
+  .centered-btn {
+    display: block;
+    margin: 0 auto;
+  }
+
+
+</style>
+<script>
+  function toggleDaysForShift() {
+    var shiftMethod = document.getElementById("shiftMethod").value;
+    var daysForShiftGroup = document.getElementById("daysForShiftGroup");
+    var daysForShift = document.getElementById("daysForShift");
+
+    if (shiftMethod === "allNighter") {
+      daysForShiftGroup.style.display = "none";
+    } else {
+      daysForShiftGroup.style.display = "block";
+    }
+
+    if (shiftMethod === "allNighter") {
+      daysForShift.required = false;
+    } else {
+      daysForShift.required = true;
+    }
+  }
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+  <h1 class="mt-4 mb-4" style="text-align: center;">Wake-up Time Shift Tool</h1>
+
+  <h2 class="text-center placeholder-header">Want to change your sleep schedule using <a href="http://murdy.pythonanywhere.com/" style="text-decoration: underline;">Huberman's light exposure rules</a>? Input your details for a visual guide.</h2>
+
+  <div class="text-center">
+    <form action="/submit_shift" method="post" id="shiftForm" class="elegant-form">
+      <p>Current Wake-up Time:</p>
+      <input type="time" class="form-control" name="currentWakeTime" required>
+
+      <p>Desired Wake-up Time:</p>
+      <input type="time" class="form-control" name="desiredWakeTime" required>
+
+      <select class="form-control" id="shiftMethod" name="shiftMethod" required onchange="toggleDaysForShift()">
+        <option value="gradual">Gradual Shift</option>
+        <option value="allNighter">Pull All-Nighter</option>
+      </select>
+
+      <div class="form-group" id="daysForShiftGroup">
+        <input type="number" class="form-control" id="daysForShift" name="daysForShift" placeholder="Days for Shift (max 5)" min="1" max="5" required>
+      </div>
+
+      <button class="btn btn-primary d-block mx-auto" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="mt-4">
+    {% if img_data %}
+      {% for img in img_data %}
+        <div class="d-flex justify-content-center">
+          <img src="data:image/png;base64,{{img}}" alt="Graph" class="graph-img img-fluid">
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="info-content mt-4">
+    {% include 'extended_legend.html' %}
+  </div>
+   <div class="tips-section mt-4">
+    <h2>Tips</h2>
+    <p>For a more refreshing wake-up, aim to rise during a light sleep phase. It can make waking up earlier feel less difficult. Learn more from Dr. Huberman's short <a href="https://www.tiktok.com/@menoptimizer/video/7182559077397024005" target="_blank">video</a> on this topic.</p>
+  </div>
+
+</div>
+{% endblock %}
