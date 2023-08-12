@@ -19,7 +19,7 @@ def handle_all_nighter(desired_wake_time):
     blocks = calculate_blocks(wake_time_hours)
     adjusted_blocks = adjust_blocks(blocks)
     graph = SleepImpactGraph()
-    img_data = graph.create_graph(adjusted_blocks, day_number=1)
+    img_data = graph.create_graph(adjusted_blocks, day_number=666)
     return img_data
 
 
