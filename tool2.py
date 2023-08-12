@@ -1,25 +1,16 @@
-import secrets
 from datetime import datetime
 import base64
 import io
 
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import render_template, request, redirect, url_for, session
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-from flask_session import Session
 from utils import calculate_blocks, adjust_blocks
 from constants import RED_COLOR, YELLOW_COLOR, GREEN_COLOR, GREY_COLOR
 
 # Set backend for matplotlib
 matplotlib.use('Agg')
-
-
-class ConfigureFlaskApp:
-    def __init__(self, flask_app):
-        flask_app.secret_key = secrets.token_hex(32)
-        flask_app.config['SESSION_TYPE'] = 'filesystem'
-        Session(flask_app)
 
 
 class SleepImpactGraph:
@@ -94,19 +85,13 @@ def handle_gradual_shift(current_wake_time, desired_wake_time, days_for_shift):
     return img_data_list
 
 
-app = Flask(__name__)
-ConfigureFlaskApp(app)
-
-
-@app.route('/')
-def home():
+def tool2_home():
     img_data = session.pop('img_data', [])
     graph_generated = bool(img_data)
     return render_template('switch_wake_time.html', img_data=img_data, graph_generated=graph_generated)
 
 
-@app.route('/submit_shift', methods=['POST'])
-def submit_shift():
+def tool2_submit():
     current_wake_time = request.form['currentWakeTime']
     desired_wake_time = request.form['desiredWakeTime']
     shift_method = request.form['shiftMethod']
@@ -118,8 +103,4 @@ def submit_shift():
         img_data = handle_gradual_shift(current_wake_time, desired_wake_time, days_for_shift)
 
     session['img_data'] = img_data
-    return redirect(url_for('home'))
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    return redirect(url_for('tool2_home'))

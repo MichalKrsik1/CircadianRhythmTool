@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Your Sleep Tools{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <header class="text-center mb-4">
+        <h1>Your Brand Name/Logo</h1>
+    </header>
+
+    <!-- Introduction -->
+    <section>
+        <h2>Introduction</h2>
+        <p>The science behind light exposure and its relation to sleep, based on Andrew Huberman's videos...</p>
+    </section>
+
+    <!-- Tool Selection -->
+    <section class="row mt-4">
+        <!-- Graph Tool -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">Light Exposure Graph for Sleep Schedule</h3>
+                    <p class="card-text">Generate a custom graph to help you identify the optimal times to seek or avoid light based on your wake-up time.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('tool1_home') }}" class="btn btn-primary">Create Your Graph</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sleep Schedule Tool -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">Adjust Your Sleep Schedule</h3>
+                    <p class="card-text">Plan your light exposure to either gradually adjust your sleep schedule or shift it entirely using the all-nighter approach.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('tool2_home') }}" class="btn btn-primary">Adjust Schedule</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

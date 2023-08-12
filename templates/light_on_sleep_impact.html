@@ -9,13 +9,14 @@
   <h2 class="text-center placeholder-header">Submit your wake time to generate a circadian rhythm light exposure graph</h2>
 
 
-  <form action="/submit" method="post" id="timeForm">
+  <form action="{{ url_for('tool1_submit') }}" method="post" id="timeForm">
     <div class="form-group">
       <label for="wakeTime">Wake Time:</label>
       <input type="time" class="form-control" id="wakeTime" name="wakeTime">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <input type="submit" value="Submit" class="btn btn-primary"> <!-- This button will submit the form -->
   </form>
+
 
   <div class="d-flex justify-content-center mt-4">
     {% if img_data %}
