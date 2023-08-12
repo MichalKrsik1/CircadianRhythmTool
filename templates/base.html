@@ -20,7 +20,32 @@
       }
     }
 
-    /* Other styles... */
+    .bg-red {
+      background-color: #ff6666;
+      padding: 0 5px;
+    }
+
+    .bg-yellow {
+      background-color: #e5de1a;
+      padding: 0 5px;
+    }
+
+    .bg-green {
+      background-color: #44c53a;
+      padding: 0 5px;
+    }
+
+    .bg-grey {
+      background-color: grey;
+      padding: 0 5px;
+    }
+
+    .placeholder-header {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+    }
 
     </style>
     {% block extra_styles %}{% endblock %}
@@ -31,14 +56,18 @@
 
     <!-- Header -->
     <header style="text-align: center;">
-    <!-- Nav links... -->
+    <nav>
+        <a href="{{ url_for('landing_page') }}">Home</a> |
+        <a href="{{ url_for('tool1_home') }}">Tool1</a> |
+        <a href="{{ url_for('tool2_home') }}">Tool2</a>
+    </nav>
     </header>
 
     {% block content %}{% endblock %}
 
     <!-- Footer -->
     <footer style="text-align: center; margin-top: 40px;">
-        <!-- Footer content... -->
+        <p>Email: <a href="mailto:llightexposuretool@gmail.com">llightexposuretool@gmail.com</a></p>
     </footer>
 
 </body>
