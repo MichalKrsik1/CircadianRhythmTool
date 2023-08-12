@@ -57,7 +57,7 @@ def create_sleep_impact_graph(blocks, day_number=None):
     if day_number == 666:
         plt.title('How and when light exposure affects your wake up time')
     elif day_number:
-        plt.title(f'Day {day_number}')
+        plt.title(f'Day {day_number-1}')
 
     figfile = io.BytesIO()
     plt.savefig(figfile, format='png')
