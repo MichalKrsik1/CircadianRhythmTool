@@ -58,11 +58,11 @@ function toggleDaysForShift() {
 
 <div class="container">
 
-  <h1 class="mt-4 mb-4" style="text-align: center;">Wake-up Time Shift Tool</h1>
+  <h1 class="mt-4 mb-4" style="text-align: left;">Wake-up Time Shift Tool</h1>
 
-  <h2 class="text-center placeholder-header">Want to change your sleep schedule using <a href="http://murdy.pythonanywhere.com/" style="text-decoration: underline;">Huberman's light exposure rules</a>? Input your details for a visual guide.</h2>
+  <h2 class="text-left placeholder-header">Want to change your sleep schedule using <a href="http://murdy.pythonanywhere.com/" style="text-decoration: underline;">Huberman's light exposure rules</a>? Input your details for a visual guide.</h2>
 
-  <div class="text-center">
+  <div class="text-left">
 <form action="{{ url_for('tool2_submit') }}" method="post" id="shiftForm" class="elegant-form">
     <p>Current Wake-up Time:</p>
     <input type="time" class="form-control" name="currentWakeTime" required>
@@ -102,5 +102,6 @@ function toggleDaysForShift() {
     <p>For a more refreshing wake-up, aim to rise during a light sleep phase. It can make waking up earlier feel less difficult. Learn more from Dr. Huberman's short <a href="https://www.tiktok.com/@menoptimizer/video/7182559077397024005" target="_blank">video</a> on this topic.</p>
   </div>
 
+</div>
 </div>
 {% endblock %}
